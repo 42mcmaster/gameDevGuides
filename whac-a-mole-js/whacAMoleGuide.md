@@ -54,15 +54,7 @@ In the game, a mole and a piranha plant pop out of nine pipes. Click the mole to
 
 ### Get the images
 
-The video tells you to download the images from GitHub. **Do not do that.** Mr. McMaster will give you the images. Put all five in your `whac-a-mole` folder, next to your code files.
-
-| File name | What it is |
-|---|---|
-| `mario-bg.jpg` | Background for the whole page |
-| `soil.png` | Background for the game board |
-| `pipe.png` | The pipe in each of the nine tiles |
-| `monty-mole.png` | The mole (click this one) |
-| `piranha-plant.png` | The piranha plant (don't click this one) |
+The video tells you to download the images from GitHub.  Those can be downloaded here: https://github.com/ImKennyYip/whac-a-mole. 
 
 You can also make your own images in Piskel. See [Use Your Own Images](#use-your-own-images).
 
