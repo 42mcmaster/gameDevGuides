@@ -288,7 +288,7 @@ This is where JavaScript starts. Instead of typing nine `<div>` tags into the HT
 **Why give each tile an id?** Later, the game needs to know which tile has the mole and which tile you clicked. The ids `0` through `8` tell the tiles apart.
 
 <details>
-<summary>Stuck? Click to see the code</summary>
+<summary>Stuck? Click to see the code
 
 ```javascript
 window.onload = function() {
@@ -304,6 +304,47 @@ function setGame() {
     }
 }
 ```
+
+Commented Version: 
+
+```javascript
+// When the page finishes loading, run setGame.
+// The <script> tag is in the <head>, so this code loads BEFORE the board
+// exists. window.onload waits until the whole page is ready.
+window.onload = function() {
+    setGame();
+}
+
+// setGame builds the game board by creating 9 tiles.
+function setGame() {
+
+    // This loop runs 9 times.
+    //   let i = 0  -> start counting at 0
+    //   i < 9      -> keep going while i is less than 9
+    //   i++        -> add 1 to i each time through
+    // So i will be 0, 1, 2, 3, 4, 5, 6, 7, 8.
+    for (let i = 0; i < 9; i++) {
+
+        // Make a new <div> in JavaScript.
+        // It exists in the code but is not on the page yet.
+        let tile = document.createElement("div");
+
+        // Give the tile an id from "0" to "8".
+        // toString() turns the number into text, because ids are text.
+        // The id tells the tiles apart, so the game can check which tile
+        // has the mole and which tile was clicked.
+        tile.id = i.toString();
+
+        // Find the <div id="board"> from the HTML and put the new tile inside it.
+        // After the loop, the board has 9 tiles:
+        // <div id="board">
+        //     <div id="0"></div> <div id="1"></div> ... <div id="8"></div>
+        // </div>
+        document.getElementById("board").appendChild(tile);
+    }
+}
+```
+</summary>
 
 </details>
 
@@ -401,6 +442,52 @@ function setMole() {
     currMoleTile.appendChild(mole);              // put the mole in it
 }
 ```
+Commented Version
+
+```javascript
+// getRandomTile picks a random tile id from "0" to "8".
+function getRandomTile() {
+
+    // Build the random number in three steps:
+    //   Math.random()      -> a random decimal from 0 up to 1 (never exactly 1)
+    //                         example: 0.73
+    //   Math.random() * 9  -> a random decimal from 0 up to 9 (never exactly 9)
+    //                         example: 0.73 * 9 = 6.57
+    //   Math.floor(...)    -> round DOWN to a whole number
+    //                         example: 6.57 becomes 6
+    // The result is always a whole number from 0 to 8, one for each tile.
+    let num = Math.floor(Math.random() * 9);
+
+    // Send the number back as text, because the tile ids are text ("0" to "8").
+    return num.toString();
+}
+
+// setMole puts the mole in a random tile.
+// setGame runs it on a timer with setInterval, so the mole keeps moving.
+function setMole() {
+
+    // Make a new <img> tag for the mole.
+    // It exists in the code but is not on the page yet.
+    let mole = document.createElement("img");
+
+    // Tell the image which picture to show.
+    // The ./ means the file is in the same folder as this code.
+    mole.src = "./monty-mole.png";
+
+    // Get a random tile id, like "4".
+    let num = getRandomTile();
+
+    // Find the tile with that id and save it in currMoleTile.
+    // currMoleTile is declared at the top of the file, so the game
+    // remembers where the mole is. That matters later when the game
+    // clears the old tile and checks what the player clicked.
+    currMoleTile = document.getElementById(num);
+
+    // Put the mole image inside that tile. Now it shows on the page.
+    currMoleTile.appendChild(mole);
+}
+```
+
 
 </details>
 
