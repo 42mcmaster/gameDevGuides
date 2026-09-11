@@ -215,16 +215,43 @@ This is the finished version, after the green is replaced with the soil image.
 
 ```css
 #board {
+    /* Sets the width of the game board to 540 pixels. */
     width: 540px;
+
+    /* Sets the height of the game board to 540 pixels.
+       Because width and height are the same, the board is a square. */
     height: 540px;
 
-    margin: 0 auto;      /* center the board */
-    display: flex;       /* tiles line up in a row... */
-    flex-wrap: wrap;     /* ...and wrap to the next row */
+    /* Sets the top and bottom margins to 0.
+       "auto" on the left and right tells the browser to divide the
+       remaining horizontal space equally, which centers the board. */
+    margin: 0 auto;
 
+    /* Turns the board into a flex container.
+       The elements inside #board become flex items (the individual
+       game tiles/images), allowing Flexbox to control their layout. */
+    display: flex;
+
+    /* Allows the flex items to move onto a new line when there
+       isn't enough room to fit them all on one line.
+       This is what allows the tiles to form multiple rows. */
+    flex-wrap: wrap;
+
+    /* Places soil.png behind everything inside the board.
+       "./" means "look in the current folder" for the image. */
     background: url("./soil.png");
+
+    /* Scales the background image so that it completely covers
+       the 540px × 540px board.
+       The image may be cropped slightly if its proportions don't
+       match the board's proportions. */
     background-size: cover;
+
+    /* Adds a 3-pixel-wide solid white border around the board. */
     border: 3px solid white;
+
+    /* Rounds the corners of the board.
+       A larger value creates more rounded corners. */
     border-radius: 25px;
 }
 ```
