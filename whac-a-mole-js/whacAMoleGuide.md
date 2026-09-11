@@ -288,7 +288,7 @@ This is where JavaScript starts. Instead of typing nine `<div>` tags into the HT
 **Why give each tile an id?** Later, the game needs to know which tile has the mole and which tile you clicked. The ids `0` through `8` tell the tiles apart.
 
 <details>
-<summary>Stuck? Click to see the code
+<summary>Stuck? Click to see the code</summary>
 
 ```javascript
 window.onload = function() {
@@ -344,7 +344,6 @@ function setGame() {
     }
 }
 ```
-</summary>
 
 </details>
 
@@ -487,7 +486,6 @@ function setMole() {
     currMoleTile.appendChild(mole);
 }
 ```
-
 
 </details>
 
